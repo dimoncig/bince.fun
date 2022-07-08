@@ -31,4 +31,13 @@ else:
                 <input name="url" type="url" placeholder="url" required="required"/>
                 <input type="submit"/>
             </form></body></html>
+
+function jabber($input) {
+    global $data_in;
+    return match ($input) {
+        'whoami' => 'I am bot',
+        'chat id' => $data_in['message']['chat']['id'],
+        default => (sql_get_table_fx('telegram_learn_js', ["txt", "reply"], ["reply" => $input])[0]['txt'])
+    };
+}
 <?php endif;
